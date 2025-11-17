@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flat Design 2.0 Framework - Demo</title>
+  <link rel="stylesheet" href="fd2.css">
+  <style>
+    body {
+      padding: 20px 0;
+    }
+    .demo-section {
+      margin-bottom: 60px;
+    }
+    .demo-section h2 {
+      color: var(--fd2-primary);
+      border-bottom: 3px solid var(--fd2-primary);
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .theme-switcher {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 2000;
+    }
+    .theme-switcher h4 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .theme-btn {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #ddd;
+      cursor: pointer;
+      margin: 5px;
+      transition: transform 0.2s;
+    }
+    .theme-btn:hover {
+      transform: scale(1.1);
+      border-color: #333;
+    }
+    .theme-btn.orange { background: #ff9800; }
+    .theme-btn.green { background: #4CAF50; }
+    .theme-btn.blue { background: #2196F3; }
+    .theme-btn.purple { background: #9C27B0; }
+    .theme-btn.red { background: #f44336; }
+    .theme-btn.teal { background: #009688; }
+    
+    .code-block {
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 15px;
+      margin-top: 10px;
+      overflow-x: auto;
+    }
+    .code-block code {
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: #333;
+    }
+  </style>
+</head>
+<body class="fd2-theme-orange">
+
+  <!-- テーマ切り替えパネル -->
+  <div class="theme-switcher">
+    <h4>🎨 テーマ選択</h4>
+    <div>
+      <span class="theme-btn orange" onclick="FD2.setTheme('orange')" title="Orange"></span>
+      <span class="theme-btn green" onclick="FD2.setTheme('green')" title="Green"></span>
+      <span class="theme-btn blue" onclick="FD2.setTheme('blue')" title="Blue"></span>
+      <span class="theme-btn purple" onclick="FD2.setTheme('purple')" title="Purple"></span>
+      <span class="theme-btn red" onclick="FD2.setTheme('red')" title="Red"></span>
+      <span class="theme-btn teal" onclick="FD2.setTheme('teal')" title="Teal"></span>
+    </div>
+  </div>
+
+  <div class="fd2-container">
+    
+    <!-- ヘッダー -->
+    <header class="fd2-text-center fd2-mb-5">
+      <h1 class="fd2-text-primary" style="font-size: 3rem; margin-bottom: 10px;">Flat Design 2.0</h1>
+      <p class="fd2-text-muted" style="font-size: 1.2rem;">軽量でモダンなCSSフレームワーク</p>
+    </header>
+
+    <!-- ボタンセクション -->
+    <section class="demo-section">
+      <h2>ボタン (Buttons)</h2>
+      
+      <h3 class="fd2-mb-2">基本ボタン</h3>
+      <div class="fd2-mb-3">
+        <button class="fd2-btn fd2-btn-primary">プライマリ</button>
+        <button class="fd2-btn fd2-btn-secondary">セカンダリ</button>
+        <button class="fd2-btn fd2-btn-danger">削除</button>
+        <button class="fd2-btn fd2-btn-outline">アウトライン</button>
+        <button class="fd2-btn fd2-btn-primary" disabled>無効</button>
+      </div>
+
+      <h3 class="fd2-mb-2">サイズバリエーション</h3>
+      <div class="fd2-mb-3">
+        <button class="fd2-btn fd2-btn-primary fd2-btn-sm">小サイズ</button>
+        <button class="fd2-btn fd2-btn-primary">標準サイズ</button>
+        <button class="fd2-btn fd2-btn-primary fd2-btn-lg">大サイズ</button>
+      </div>
+
+      <h3 class="fd2-mb-2">ブロックボタン</h3>
+      <button class="fd2-btn fd2-btn-primary fd2-btn-block">全幅ボタン</button>
+    </section>
+
+    <!-- カードセクション -->
+    <section class="demo-section">
+      <h2>カード (Cards)</h2>
+      
+      <div class="fd2-row">
+        <div class="fd2-col-4">
+          <div class="fd2-card">
+            <div class="fd2-card-header">
+              <h4 style="margin: 0;">基本カード</h4>
+            </div>
+            <div class="fd2-card-body">
+              <p>カードの内容がここに入ります。シンプルで使いやすいデザインです。</p>
+            </div>
+            <div class="fd2-card-footer">
+              <button class="fd2-btn fd2-btn-primary fd2-btn-sm">詳細</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="fd2-col-4">
+          <div class="fd2-card fd2-card-primary">
+            <div class="fd2-card-header">
+              <h4 style="margin: 0;">プライマリカード</h4>
+            </div>
+            <div class="fd2-card-body">
+              <p>重要な情報を強調表示するカードです。テーマカラーで強調されます。</p>
+            </div>
+            <div class="fd2-card-footer">
+              <button class="fd2-btn fd2-btn-primary fd2-btn-sm">アクション</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="fd2-col-4">
+          <div class="fd2-card fd2-card-search">
+            <div class="fd2-card-header" onclick="toggleCard(this)">
+              <span><b>検索カード</b></span>
+              <span class="fd2-toggle-mark">−</span>
+            </div>
+            <div class="fd2-card-body fd2-collapse fd2-collapse-open">
+              <p>クリックで開閉できるカードです。検索フォームなどに最適です。</p>
+              <div class="fd2-form-group">
+                <input type="text" class="fd2-form-input" placeholder="検索...">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- フォームセクション -->
+    <section class="demo-section">
+      <h2>フォーム (Forms)</h2>
+      
+      <div class="fd2-row">
+        <div class="fd2-col-6">
+          <div class="fd2-card">
+            <div class="fd2-card-header">
+              <h4 style="margin: 0;">基本フォーム</h4>
+            </div>
+            <div class="fd2-card-body">
+              <form>
+                <div class="fd2-form-group">
+                  <label class="fd2-form-label">
+                    <span class="fd2-label-text">氏名</span>
+                    <input type="text" class="fd2-form-input" placeholder="山田太郎">
+                  </label>
+                </div>
+
+                <div class="fd2-form-group">
+                  <label class="fd2-form-label">
+                    <span class="fd2-label-text">メール</span>
+                    <input type="email" class="fd2-form-input" placeholder="example@example.com">
+                  </label>
+                </div>
+
+                <div class="fd2-form-group">
+                  <label class="fd2-form-label">
+                    <span class="fd2-label-text">部署</span>
+                    <select class="fd2-form-select">
+                      <option>営業部</option>
+                      <option>開発部</option>
+                      <option>総務部</option>
+                    </select>
+                  </label>
+                </div>
+
+                <div class="fd2-form-group">
+                  <label class="fd2-form-label">
+                    <span class="fd2-label-text">備考</span>
+                    <textarea class="fd2-form-textarea" rows="3"></textarea>
+                  </label>
+                </div>
+
+                <button type="submit" class="fd2-btn fd2-btn-primary">送信</button>
+                <button type="reset" class="fd2-btn fd2-btn-secondary">リセット</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="fd2-col-6">
+          <div class="fd2-card">
+            <div class="fd2-card-header">
+              <h4 style="margin: 0;">横並びフォーム</h4>
+            </div>
+            <div class="fd2-card-body">
+              <form>
+                <div class="fd2-form-row">
+                  <div class="fd2-form-group">
+                    <label class="fd2-form-label">
+                      <span class="fd2-label-text">姓</span>
+                      <input type="text" class="fd2-form-input" placeholder="山田">
+                    </label>
+                  </div>
+                  <div class="fd2-form-group">
+                    <label class="fd2-form-label">
+                      <span class="fd2-label-text">名</span>
+                      <input type="text" class="fd2-form-input" placeholder="太郎">
+                    </label>
+                  </div>
+                </div>
+
+                <div class="fd2-form-row">
+                  <div class="fd2-form-group">
+                    <label class="fd2-form-label">
+                      <span class="fd2-label-text">電話</span>
+                      <input type="tel" class="fd2-form-input" placeholder="03-1234-5678">
+                    </label>
+                  </div>
+                  <div class="fd2-form-group">
+                    <label class="fd2-form-label">
+                      <span class="fd2-label-text">郵便番号</span>
+                      <input type="text" class="fd2-form-input" placeholder="123-4567">
+                    </label>
+                  </div>
+                </div>
+
+                <h4 class="fd2-mt-3">バリデーションエラー例</h4>
+                <div class="fd2-form-group">
+                  <label class="fd2-form-label">
+                    <span class="fd2-label-text">必須項目</span>
+                    <input type="text" class="fd2-form-input is-invalid">
+                  </label>
+                  <div class="fd2-form-error">この項目は必須です</div>
+                </div>
+
+                <button type="submit" class="fd2-btn fd2-btn-primary">送信</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- テーブルセクション -->
+    <section class="demo-section">
+      <h2>テーブル (Tables)</h2>
+      
+      <h3 class="fd2-mb-2">基本テーブル</h3>
+      <table class="fd2-table fd2-mb-4">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>氏名</th>
+            <th>部署</th>
+            <th>メール</th>
+            <th style="text-align: center;">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>001</td>
+            <td>山田太郎</td>
+            <td>営業部</td>
+            <td>yamada@example.com</td>
+            <td style="text-align: center;">
+              <button class="fd2-btn fd2-btn-primary fd2-btn-sm">編集</button>
+              <button class="fd2-btn fd2-btn-danger fd2-btn-sm">削除</button>
+            </td>
+          </tr>
+          <tr>
+            <td>002</td>
+            <td>佐藤花子</td>
+            <td>開発部</td>
+            <td>sato@example.com</td>
+            <td style="text-align: center;">
+              <button class="fd2-btn fd2-btn-primary fd2-btn-sm">編集</button>
+              <button class="fd2-btn fd2-btn-danger fd2-btn-sm">削除</button>
+            </td>
+          </tr>
+          <tr>
+            <td>003</td>
+            <td>鈴木一郎</td>
+            <td>総務部</td>
+            <td>suzuki@example.com</td>
+            <td style="text-align: center;">
+              <button class="fd2-btn fd2-btn-primary fd2-btn-sm">編集</button>
+              <button class="fd2-btn fd2-btn-danger fd2-btn-sm">削除</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="fd2-mb-2">ストライプテーブル</h3>
+      <table class="fd2-table fd2-table-striped fd2-mb-4">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th style="text-align: right;">価格</th>
+            <th style="text-align: right;">在庫</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ノートPC</td>
+            <td style="text-align: right;">¥120,000</td>
+            <td style="text-align: right;">15</td>
+            <td><span class="fd2-text-primary fd2-font-weight-bold">在庫あり</span></td>
+          </tr>
+          <tr>
+            <td>マウス</td>
+            <td style="text-align: right;">¥2,500</td>
+            <td style="text-align: right;">50</td>
+            <td><span class="fd2-text-primary fd2-font-weight-bold">在庫あり</span></td>
+          </tr>
+          <tr>
+            <td>キーボード</td>
+            <td style="text-align: right;">¥8,000</td>
+            <td style="text-align: right;">0</td>
+            <td><span class="fd2-text-danger fd2-font-weight-bold">売り切れ</span></td>
+          </tr>
+          <tr>
+            <td>モニター</td>
+            <td style="text-align: right;">¥35,000</td>
+            <td style="text-align: right;">8</td>
+            <td><span class="fd2-text-primary fd2-font-weight-bold">在庫あり</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="fd2-mb-2">ボーダーテーブル</h3>
+      <table class="fd2-table fd2-table-bordered">
+        <thead>
+          <tr>
+            <th>月</th>
+            <th style="text-align: right;">売上</th>
+            <th style="text-align: right;">前年比</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1月</td>
+            <td style="text-align: right;">¥5,000,000</td>
+            <td style="text-align: right;">+12%</td>
+          </tr>
+          <tr>
+            <td>2月</td>
+            <td style="text-align: right;">¥4,800,000</td>
+            <td style="text-align: right;">+8%</td>
+          </tr>
+          <tr>
+            <td>3月</td>
+            <td style="text-align: right;">¥6,200,000</td>
+            <td style="text-align: right;">+15%</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- モーダルセクション -->
+    <section class="demo-section">
+      <h2>モーダル (Modal)</h2>
+      
+      <div class="fd2-mb-3">
+        <button class="fd2-btn fd2-btn-primary" onclick="openModal('demoModal1')">
+          基本モーダルを開く
+        </button>
+        <button class="fd2-btn fd2-btn-danger" onclick="openModal('demoModal2')">
+          削除確認モーダルを開く
+        </button>
+        <button class="fd2-btn fd2-btn-secondary" onclick="openModal('demoModal3')">
+          フォームモーダルを開く
+        </button>
+      </div>
+    </section>
+
+    <!-- グリッドシステム -->
+    <section class="demo-section">
+      <h2>グリッドシステム (Grid System)</h2>
+      
+      <h3 class="fd2-mb-2">12カラムグリッド</h3>
+      <div class="fd2-row fd2-mb-3">
+        <div class="fd2-col-12">
+          <div class="fd2-bg-primary-light fd2-p-2 fd2-text-center fd2-rounded">12列</div>
+        </div>
+      </div>
+      <div class="fd2-row fd2-mb-3">
+        <div class="fd2-col-6">
+          <div class="fd2-bg-primary-light fd2-p-2 fd2-text-center fd2-rounded">6列</div>
+        </div>
+        <div class="fd2-col-6">
+          <div class="fd2-bg-primary-light fd2-p-2 fd2-text-center fd2-rounded">6列</div>
+        </div>
+      </div>
+      <div class="fd2-row fd2-mb-3">
+        <div class="fd2-col-4">
+          <div class="fd2-bg-primary-light fd2-p-2 fd2-text-center fd2-rounded">4列</div>
+        </div>
+        <div class="fd2-col-4">
+          <div class="fd2-bg-primary-light fd2-p-2 fd2-text-center fd2-rounded">4列</div>
+        </div>
+        <div class="fd2-col-4">
+          <div class="fd2-bg-primary-light fd2-p-2 fd2-text-center fd2-rounded">4列</div>
+        </div>
+      </div>
+      <div class="fd2-row fd2-mb-3">
+        <div class="fd2-col-3">
+          <div class="fd2-bg-primary-light fd2-p-2 fd2-text-center fd2-rounded">3列</div>
+        </div>
+        <div class="fd2-col-9">
+          <div class="fd2-bg-primary-light fd2-p-2 fd2-text-center fd2-rounded">9列</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ユーティリティクラス -->
+    <section class="demo-section">
+      <h2>ユーティリティクラス (Utilities)</h2>
+      
+      <div class="fd2-row">
+        <div class="fd2-col-6">
+          <h3>スペーシング</h3>
+          <div class="fd2-bg-gray-50 fd2-p-2 fd2-rounded fd2-mb-2">fd2-p-2 (padding)</div>
+          <div class="fd2-bg-gray-50 fd2-mt-3 fd2-p-2 fd2-rounded">fd2-mt-3 (margin-top)</div>
+          
+          <h3 class="fd2-mt-4">テキスト配置</h3>
+          <div class="fd2-text-left fd2-bg-gray-50 fd2-p-2 fd2-rounded fd2-mb-1">左寄せ</div>
+          <div class="fd2-text-center fd2-bg-gray-50 fd2-p-2 fd2-rounded fd2-mb-1">中央寄せ</div>
+          <div class="fd2-text-right fd2-bg-gray-50 fd2-p-2 fd2-rounded">右寄せ</div>
+        </div>
+
+        <div class="fd2-col-6">
+          <h3>テキスト装飾</h3>
+          <div class="fd2-mb-2">
+            <span class="fd2-text-primary">プライマリカラー</span> / 
+            <span class="fd2-text-danger">危険色</span> / 
+            <span class="fd2-text-muted">ミュート</span>
+          </div>
+          <div class="fd2-mb-2">
+            <span class="fd2-text-sm">小さいテキスト</span> / 
+            <span class="fd2-text-lg">大きいテキスト</span>
+          </div>
+          <div class="fd2-mb-2">
+            <span class="fd2-font-weight-light">細字</span> / 
+            <span class="fd2-font-weight-bold">太字</span>
+          </div>
+          
+          <h3 class="fd2-mt-4">背景・影</h3>
+          <div class="fd2-bg-primary-light fd2-p-2 fd2-rounded fd2-mb-2">プライマリ背景</div>
+          <div class="fd2-bg-white fd2-shadow-md fd2-p-2 fd2-rounded">影付き</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- マイクロインタラクション -->
+    <section class="demo-section">
+      <h2>🎨 マイクロインタラクション (Micro-interactions)</h2>
+      
+      <div class="fd2-row">
+        <div class="fd2-col-6">
+          <div class="fd2-card">
+            <div class="fd2-card-header">
+              <h4 style="margin: 0;">リップルエフェクト</h4>
+            </div>
+            <div class="fd2-card-body">
+              <p class="fd2-mb-2">ボタンをクリックすると波紋が広がります</p>
+              <button class="fd2-btn fd2-btn-primary fd2-btn-lg">クリックしてみて!</button>
+            </div>
+          </div>
+
+          <div class="fd2-card fd2-mt-3">
+            <div class="fd2-card-header">
+              <h4 style="margin: 0;">ローディングアニメーション</h4>
+            </div>
+            <div class="fd2-card-body">
+              <p class="fd2-mb-2">ローディングスピナー:</p>
+              <span class="fd2-loading"></span>
+              <span class="fd2-loading fd2-ml-2" style="border-top-color: #4CAF50;"></span>
+              <span class="fd2-loading fd2-ml-2" style="border-top-color: #2196F3;"></span>
+              
+              <p class="fd2-mt-3 fd2-mb-2">スケルトンローディング:</p>
+              <div class="fd2-skeleton fd2-mb-2" style="height: 20px;"></div>
+              <div class="fd2-skeleton fd2-mb-2" style="height: 20px; width: 80%;"></div>
+              <div class="fd2-skeleton" style="height: 20px; width: 60%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fd2-col-6">
+          <div class="fd2-card">
+            <div class="fd2-card-header">
+              <h4 style="margin: 0;">ホバーエフェクト一覧</h4>
+            </div>
+            <div class="fd2-card-body">
+              <ul style="list-style: none; padding: 0;">
+                <li class="fd2-mb-2">
+                  <strong>✨ ボタン:</strong> 2px持ち上げ + 影拡大
+                </li>
+                <li class="fd2-mb-2">
+                  <strong>📊 テーブル行:</strong> スケール拡大 + 左スライド + 左ボーダー出現
+                </li>
+                <li class="fd2-mb-2">
+                  <strong>🎴 カード:</strong> 影の拡大
+                </li>
+                <li class="fd2-mb-2">
+                  <strong>📝 フォーム:</strong> 1px持ち上げ + 外側グロー
+                </li>
+                <li class="fd2-mb-2">
+                  <strong>🔘 モーダル閉じる:</strong> 回転 + スケール拡大
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="fd2-card fd2-mt-3">
+            <div class="fd2-card-header">
+              <h4 style="margin: 0;">アニメーション詳細</h4>
+            </div>
+            <div class="fd2-card-body">
+              <ul style="list-style: none; padding: 0;">
+                <li class="fd2-mb-2">
+                  <strong>🔍 検索カード:</strong> max-height + opacity遷移
+                </li>
+                <li class="fd2-mb-2">
+                  <strong>🪟 モーダル:</strong> スライドアップ + スケール + 背景ブラー
+                </li>
+                <li class="fd2-mb-2">
+                  <strong>🔄 トグルマーク:</strong> 180度回転
+                </li>
+                <li class="fd2-mb-2">
+                  <strong>💫 フォーカス:</strong> パルスアニメーション
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fd2-card fd2-mt-3 fd2-card-primary">
+        <div class="fd2-card-header">
+          <h4 style="margin: 0;">💡 Tip: すべてのインタラクションを体験してみよう!</h4>
+        </div>
+        <div class="fd2-card-body">
+          <p>このデモページ内のすべての要素にマウスを乗せたり、クリックしたり、フォーカスを当ててみてください。フラットデザイン2.0の「深み」を感じられるはずです!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="fd2-text-center fd2-mt-5 fd2-pt-4 fd2-border-top">
+      <p class="fd2-text-muted">
+        <strong>Flat Design 2.0 Framework</strong> v1.0.0<br>
+        軽量でモダンなCSSフレームワーク
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- モーダル群 -->
+  <!-- 基本モーダル -->
+  <div class="fd2-modal" id="demoModal1">
+    <div class="fd2-modal-overlay"></div>
+    <div class="fd2-modal-content">
+      <div class="fd2-modal-header">
+        <h3>基本モーダル</h3>
+        <button class="fd2-modal-close" onclick="closeModal('demoModal1')">×</button>
+      </div>
+      <div class="fd2-modal-body">
+        <p>これは基本的なモーダルウィンドウです。</p>
+        <p>重要な情報を表示したり、ユーザーの確認を求める際に使用します。</p>
+      </div>
+      <div class="fd2-modal-footer">
+        <button class="fd2-btn fd2-btn-primary" onclick="closeModal('demoModal1')">OK</button>
+        <button class="fd2-btn fd2-btn-secondary" onclick="closeModal('demoModal1')">キャンセル</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 削除確認モーダル -->
+  <div class="fd2-modal" id="demoModal2">
+    <div class="fd2-modal-overlay"></div>
+    <div class="fd2-modal-content">
+      <div class="fd2-modal-header">
+        <h3 class="fd2-text-danger">削除の確認</h3>
+        <button class="fd2-modal-close" onclick="closeModal('demoModal2')">×</button>
+      </div>
+      <div class="fd2-modal-body">
+        <p><strong>この操作は取り消せません。</strong></p>
+        <p>本当に削除してもよろしいですか?</p>
+      </div>
+      <div class="fd2-modal-footer">
+        <button class="fd2-btn fd2-btn-danger" onclick="alert('削除されました'); closeModal('demoModal2')">削除</button>
+        <button class="fd2-btn fd2-btn-secondary" onclick="closeModal('demoModal2')">キャンセル</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- フォームモーダル -->
+  <div class="fd2-modal" id="demoModal3">
+    <div class="fd2-modal-overlay"></div>
+    <div class="fd2-modal-content">
+      <div class="fd2-modal-header">
+        <h3>新規登録</h3>
+        <button class="fd2-modal-close" onclick="closeModal('demoModal3')">×</button>
+      </div>
+      <div class="fd2-modal-body">
+        <form id="modalForm">
+          <div class="fd2-form-group">
+            <label class="fd2-form-label">
+              <span class="fd2-label-text">氏名</span>
+              <input type="text" class="fd2-form-input" placeholder="山田太郎" required>
+            </label>
+          </div>
+          <div class="fd2-form-group">
+            <label class="fd2-form-label">
+              <span class="fd2-label-text">メール</span>
+              <input type="email" class="fd2-form-input" placeholder="example@example.com" required>
+            </label>
+          </div>
+        </form>
+      </div>
+      <div class="fd2-modal-footer">
+        <button class="fd2-btn fd2-btn-primary" onclick="if(FD2.validateForm(document.getElementById('modalForm'))){alert('登録しました'); closeModal('demoModal3')}">登録</button>
+        <button class="fd2-btn fd2-btn-secondary" onclick="closeModal('demoModal3')">キャンセル</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="fd2.js"></script>
+</body>
+</html>
